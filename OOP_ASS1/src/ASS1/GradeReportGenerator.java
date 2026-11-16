@@ -1,6 +1,6 @@
-//Names: Dan Ben Baruch & Tal Portal
-//IDs: 324179639 & 212999064
-
+//Names: Dan Ben Baruch & Tal Porta//
+//IDs: 324179639 & 212999064//
+package ASS1;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;

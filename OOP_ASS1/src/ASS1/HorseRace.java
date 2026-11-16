@@ -1,6 +1,6 @@
-//Names: Dan Ben Baruch & Tal Portal
-//IDs: 324179639 & 212999064
-
+//Names: Dan Ben Baruch & Tal Porta//
+//IDs: 324179639 & 212999064//
+package ASS1;
 import java.util.Scanner;
 
 public class HorseRace {
@@ -8,7 +8,7 @@ public class HorseRace {
         Scanner scanner = new Scanner(System.in);
         
         // Prompt user to enter the race distance
-        System.out.print("Enter distance: ");
+        System.out.print("Enter distance  : ");
         int totalDistance = scanner.nextInt();
 
         FinishingLine finishLine = new FinishingLine();

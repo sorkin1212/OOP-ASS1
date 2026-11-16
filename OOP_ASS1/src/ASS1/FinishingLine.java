@@ -1,6 +1,6 @@
-//Names: Dan Ben Baruch & Tal Portal
-//IDs: 324179639 & 212999064
-
+//Names: Dan Ben Baruch & Tal Portal//
+//IDs: 324179639 & 212999064//
+package ASS1;
 public class FinishingLine {
     private int placeCounter = 1;
 
