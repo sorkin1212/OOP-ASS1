@@ -1,5 +1,5 @@
-//Names: Dan Ben Baruch & Tal Portal//
- //IDs: 324179639 & 212999064//
+// Names: Dan Ben Baruch & Tal Portal
+// IDs: 324179639 & 212999064
 package ASS1;
 
 public class Character {
@@ -8,9 +8,7 @@ public class Character {
     private int level;
 
     public Character() {
-        this.name = "Unknown";
-        this.health = 0;
-        this.level = 0;
+        this("Unknown", 0, 0);
     }
 
     public Character(String name, int health, int level) {
@@ -39,15 +37,14 @@ public class Character {
 
     public void heal(int amount) {
         if (amount > 0) {
-            health += amount;
-            if (health > 10) {
-                health = 10;
-            }
+            health += Math.min(amount, 10 - health);
         }
     }
 
     @Override
     public String toString() {
-        return "Name: " + name + "\nHealth: " + health + "\nLevel: " + level;
+        return "Name: " + name
+                + "\nHealth: " + health
+                + "\nLevel: " + level;
     }
 }

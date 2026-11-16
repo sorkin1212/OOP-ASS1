@@ -1,5 +1,5 @@
-//Names: Dan Ben Baruch & Tal Portal//
- //IDs: 324179639 & 212999064//
+// Names: Dan Ben Baruch & Tal Portal
+// IDs: 324179639 & 212999064
 package ASS1;
 
 public class Item {
@@ -8,9 +8,7 @@ public class Item {
     private boolean isMagical;
 
     public Item() {
-        this.name = "Unknown";
-        this.value = 0;
-        this.isMagical = false;
+        this("Unknown", 0, false);
     }
 
     public Item(String name, int value, boolean isMagical) {
@@ -28,9 +26,7 @@ public class Item {
     }
 
     public void setValue(int value) {
-        if (value >= 0) {
-            this.value = value;
-        }
+        this.value = Math.max(0, value);
     }
 
     public boolean isMagical() {
@@ -39,10 +35,10 @@ public class Item {
 
     @Override
     public String toString() {
-        String res = "Name: " + name + "\nValue: " + value;
+        String description = "Name: " + name + "\nValue: " + value;
         if (isMagical) {
-            res += "\nMagical item";
+            description += "\nMagical item";
         }
-        return res;
+        return description;
     }
 }

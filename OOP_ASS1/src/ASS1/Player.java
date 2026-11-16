@@ -1,12 +1,18 @@
-//Names: Dan Ben Baruch & Tal Portal//
- //IDs: 324179639 & 212999064//
+// Names: Dan Ben Baruch & Tal Portal
+// IDs: 324179639 & 212999064
 package ASS1;
+
+import java.util.Arrays;
+
 public class Player extends Character {
     private Item[] inventory;
 
+    public Player(String name, int health, int level) {
+        this(name, health, level, new Item[0]);
+    }
+
     public Player(String name, int health, int level, int inventorySize) {
-        super(name, health, level);
-        this.inventory = new Item[inventorySize];
+        this(name, health, level, new Item[inventorySize]);
     }
 
     public Player(String name, int health, int level, Item[] inventory) {
@@ -21,7 +27,10 @@ public class Player extends Character {
                 return true;
             }
         }
-        return false;
+
+        inventory = Arrays.copyOf(inventory, inventory.length + 1);
+        inventory[inventory.length - 1] = item;
+        return true;
     }
 
     public int calculateInventoryValue() {
@@ -45,15 +54,17 @@ public class Player extends Character {
 
     @Override
     public String toString() {
-        StringBuilder itemsStr = new StringBuilder();
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] != null) {
-                if (itemsStr.length() > 0) {
-                    itemsStr.append(" | ");
+        StringBuilder items = new StringBuilder();
+
+        for (Item item : inventory) {
+            if (item != null) {
+                if (items.length() > 0) {
+                    items.append(" | ");
                 }
-                itemsStr.append(inventory[i].getName());
+                items.append(item.getName());
             }
         }
-        return super.toString() + "\nInventory: " + itemsStr.toString();
+
+        return super.toString() + "\nInventory: " + items;
     }
 }

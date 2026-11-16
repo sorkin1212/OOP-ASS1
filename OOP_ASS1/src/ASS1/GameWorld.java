@@ -1,6 +1,8 @@
-//Names: Dan Ben Baruch & Tal Portal//
- //IDs: 324179639 & 212999064//
+// Names: Dan Ben Baruch & Tal Portal
+// IDs: 324179639 & 212999064
 package ASS1;
+
+import java.util.Arrays;
 
 public class GameWorld {
     private String name;
@@ -9,10 +11,7 @@ public class GameWorld {
     private int difficulty;
 
     public GameWorld() {
-        this.name = "Crystalpath";
-        this.difficulty = 1;
-        this.players = new Player[0];
-        this.enemies = new Enemy[0];
+        this("Crystalpath", 1, new Player[0], new Enemy[0]);
     }
 
     public GameWorld(String name, int difficulty, Player[] players, Enemy[] enemies) {
@@ -23,17 +22,13 @@ public class GameWorld {
     }
 
     public void addPlayer(Player player) {
-        Player[] newPlayers = new Player[players.length + 1];
-        for (int i = 0; i < players.length; i++) {
-            newPlayers[i] = players[i];
-        }
-        newPlayers[newPlayers.length - 1] = player;
-        players = newPlayers;
+        players = Arrays.copyOf(players, players.length + 1);
+        players[players.length - 1] = player;
     }
 
     public void printAllPlayers() {
         for (int i = 0; i < players.length; i++) {
-            System.out.println("Player " + (i + 1));
+            System.out.println("------------- Player " + (i + 1) + " -------------");
             System.out.println(players[i]);
             System.out.println();
         }
@@ -41,9 +36,9 @@ public class GameWorld {
 
     public int getTotalValueOfWorld() {
         int total = 0;
-        for (Player p : players) {
-            if (p != null) {
-                total += p.calculateInventoryValue();
+        for (Player player : players) {
+            if (player != null) {
+                total += player.calculateInventoryValue();
             }
         }
         return total;
@@ -51,6 +46,8 @@ public class GameWorld {
 
     @Override
     public String toString() {
-        return "World Name: " + name + "\nDifficulty: " + difficulty + "\nNumber of players: " + players.length;
+        return "World Name: " + name
+                + "\nDifficulty: " + difficulty
+                + "\nNumber of players: " + players.length;
     }
 }
